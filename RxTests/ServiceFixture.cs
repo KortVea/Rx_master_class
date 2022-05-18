@@ -1,4 +1,5 @@
 using System;
+using System.Reactive;
 using Microsoft.Reactive.Testing;
 using Xunit;
 
@@ -26,6 +27,11 @@ public class ServiceFixture
             scheduler.AdvanceBy(TimeSpan.FromSeconds(1).Ticks);
             Assert.Equal(2, testObserver.Messages.Count);
             Assert.Equal(1, testObserver.Messages[1].Value.Value);
+            
+            scheduler.AdvanceBy(TimeSpan.FromSeconds(8).Ticks);
+            Assert.Equal(11, testObserver.Messages.Count);
+            Assert.Equal(9, testObserver.Messages[9].Value.Value);
+            Assert.Equal(NotificationKind.OnCompleted, testObserver.Messages[10].Value.Kind);
     }
 }
 
