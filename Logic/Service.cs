@@ -5,12 +5,12 @@ namespace Logic;
 
 public class Service: IService
 {
-    public IObservable<int> GetData { get; }
+    public IObservable<int> GetTenNumberAndComplete { get; }
 
     public Service(TimeSpan interval, IScheduler scheduler)
     {
 
-        this.GetData = Observable
+        this.GetTenNumberAndComplete = Observable
             .Interval(interval, scheduler)
             .Select(Convert.ToInt32)
             .Take(10, scheduler);
@@ -19,5 +19,5 @@ public class Service: IService
 
 public interface IService
 {
-    IObservable<int> GetData { get; }
+    IObservable<int> GetTenNumberAndComplete { get; }
 }

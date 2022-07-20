@@ -1,9 +1,8 @@
 using System;
 using System.Reactive.Concurrency;
-using Logic;
 using Microsoft.Reactive.Testing;
 
-namespace RxTests;
+namespace RxTests.Service;
 
 public class ServiceBuilder
 {
@@ -22,9 +21,9 @@ public class ServiceBuilder
         return this;
     }
 
-    public Service Build() =>
-        new Service(_timeSpan, _scheduler);
+    public Logic.Service Build() =>
+        new (_timeSpan, _scheduler);
 
-    public static implicit operator Service(ServiceBuilder builder) =>
+    public static implicit operator Logic.Service(ServiceBuilder builder) =>
         builder.Build();
 }

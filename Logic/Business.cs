@@ -15,7 +15,7 @@ public class Business : IDisposable
         this.disposables.Add(
             this
                 .service
-                .GetData
+                .GetTenNumberAndComplete
                 .Do(this.ServicedResult)
                 .Subscribe(i => Console.WriteLine($"{i}"),
                     () => Console.WriteLine("Completed")));

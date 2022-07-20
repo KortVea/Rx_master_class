@@ -1,9 +1,10 @@
 using System;
 using System.Reactive;
 using Microsoft.Reactive.Testing;
+using RxTests.Extensions;
 using Xunit;
 
-namespace RxTests;
+namespace RxTests.Service;
 
 public class ServiceFixture
 {
@@ -16,7 +17,7 @@ public class ServiceFixture
             .WithTimeSpan(TimeSpan.FromSeconds(1))
             .WithScheduler(scheduler)
             .Build();
-        using var sut = service.GetData.Subscribe(testObserver);
+        using var sut = service.GetTenNumberAndComplete.Subscribe(testObserver);
         scheduler.AdvanceMinimal();
         Assert.Equal(0, testObserver.Messages.Count);
             

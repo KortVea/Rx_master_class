@@ -1,8 +1,7 @@
 using System;
-using System.Reactive.Concurrency;
 using Microsoft.Reactive.Testing;
 
-namespace RxTests;
+namespace RxTests.Extensions;
 
 public static class TestSchedulerExtension
 {
